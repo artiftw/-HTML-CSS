@@ -1,0 +1,582 @@
+/* подключение файлов шрифта с разными вариантами форматов для отображения в разных браузерах */
+@font-face {
+   font-family: "Nineteen Ninety Seven";
+   font-style: normal;
+   font-weight: 400;
+   src: local("Nineteen Ninety Seven"),
+      /* Пути к файлам шрифта */
+      url("../fonts/NineteenNinetySeven.otf") format("otf"),
+      url("../fonts/NineteenNinetySeven.ttf") format("ttf"),
+      url("../fonts/NineteenNinetySeven.woff") format("woff"),
+      url("../fonts/NineteenNinetySeven.woff2") format("woff2");
+}
+
+/* замена изображения курсора */
+html {
+   cursor: url("../image/default__cursor.png"), auto;
+}
+
+/* замена изображения курсора при наведения на ссылки*/
+.mario-img,
+a {
+   cursor: url("../image/cuesor_on_link.png") 18 0, auto;
+}
+
+/* установка шрифта для всего документа */
+body {
+   font-family: "Nineteen Ninety Seven";
+   overflow-x: hidden;
+}
+
+.main {
+   position: relative;
+   /* размеры блока, который формирует размер страницы отображения на экране */
+   /* ширина блока равна ширине экрана */
+   width: 100vw;
+   /* высота блока равна минимум высоте экрана */
+   min-height: 100vh;
+   /* а также высота может быть больше высоты экрана если требуется вместить содержимое страницы */
+   height: 100%;
+   /* картинка фона */
+   background-image: url(../image/fon_1440.jpg);
+   /* настройки отображения картинки */
+   background-repeat: no-repeat;
+   background-size: cover;
+   overflow: hidden;
+}
+
+/* Медиа запрос. Применяются стили указанные в медиазапросе при ширине экрана меньше указанного (1440px) */
+@media (max-width: 1439.98px) {
+   .main {
+      /* картинка фона */
+      background-image: url(../image/fon_1024.jpg);
+      padding-bottom: 40vw;
+   }
+}
+
+/* при еще более меньшем экране снова стили поменяются, но только те, которые записаны в медиазапросе */
+@media (max-width:1023.98px) {
+   .main {
+      padding-bottom: 50vw;
+   }
+}
+
+.floor {
+   position: absolute;
+   /* позиционирование каменного пола от низа экрана (в процентах относительно высоты экрана) */
+   bottom: 0vw;
+   /* высота пола*/
+   height: 4.93vw;
+   /* ширина пола */
+   width: 100%;
+   z-index: 3;
+}
+
+@media (max-width:1439.98px) {
+   .floor {
+      height: 6.93vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .floor {
+      height: 11.11vw;
+   }
+}
+
+.floor-img {
+   /* позиционирование картинки пола, такой набор стилей применяется
+   для адаптивного отображения картинки внутри блока floor */
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+/* Облака */
+
+[class^="cloud"] {
+   position: absolute;
+}
+
+/* позиционирование облаков и их размеры */
+.cloud_1 {
+   /* координаты позиционирования */
+   top: 7.08vw;
+   left: 16.04vw;
+   /* размер */
+   width: 19.03vw;
+   height: 9.58vw;
+}
+
+@media (max-width:1439.98px) {
+   .cloud_1 {
+      top: 9.96vw;
+      left: 22.56vw;
+      width: 26.76vw;
+      height: 13.48vw;
+   }
+}
+
+.cloud_2 {
+   top: 3.4vw;
+   left: 53.96vw;
+   width: 12.71vw;
+   height: 6.39vw;
+}
+
+@media (max-width:1439.98px) {
+   .cloud_2 {
+      top: 22.8vw;
+      left: 68.07vw;
+      width: 17.87vw;
+      height: 8.98vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .cloud_2 {
+      top: 4.72vw;
+      left: 58.06vw;
+      width: 30vw;
+      height: 15vw;
+   }
+}
+
+.cloud_3 {
+   top: 17.01vw;
+   left: 48.4vw;
+   width: 12.71vw;
+   height: 6.39vw;
+}
+
+@media (max-width:1439.98px) {
+   .cloud_3 {
+      top: 4.79vw;
+      left: 75.88vw;
+      width: 17.87vw;
+      height: 8.98vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .cloud_3 {
+      top: 44.17vw;
+      left: 43vw;
+      width: 30vw;
+      height: 15vw;
+   }
+}
+
+.cloud_4 {
+   top: 9.17vw;
+   right: 6.87vw;
+   width: 19.03vw;
+   height: 9.58vw;
+}
+
+@media (max-width:1439.98px) {
+   .cloud_4 {
+      top: 33.2vw;
+      right: -14vw;
+      width: 26.76vw;
+      height: 13.48vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .cloud_4 {
+      top: 30vw;
+      right: -5.5vw;
+      width: 23.89vw;
+      height: 11.94vw;
+   }
+}
+
+/* блок, который задаёт размеры области для содержания страницы. В нем находятся фото, текст и ссылки */
+.container {
+   width: 100%;
+   padding: 5.56vw;
+}
+
+@media (max-width:1439.98px) {
+   .container {
+      display: block;
+      padding: 7.81vw;
+   }
+}
+
+/* Зелёная труба */
+.green__pipe {
+   /* позиционирование картинки  */
+   position: absolute;
+   bottom: 0vw;
+   right: 5.56vw;
+   z-index: 2;
+   /* размер картинки */
+   width: 9.03vw;
+   height: 18.06vw;
+}
+
+@media (max-width:1439.98px) {
+   .green__pipe {
+      right: 29.59vw;
+      width: 12.7vw;
+      height: 25.39vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .green__pipe {
+      bottom: -10vw;
+      right: 16.67vw;
+      width: 19.44vw;
+      height: 38.89vw;
+   }
+}
+
+/* полка, на которой стоит Марио */
+.shelf {
+   position: absolute;
+   bottom: 21.81vw;
+   right: 16.67vw;
+   width: 14.79vw;
+   height: 4.93vw;
+}
+
+@media (max-width:1439.98px) {
+   .shelf {
+      bottom: 19vw;
+      right: 49.51vw;
+      width: 20.8vw;
+      height: 6.93vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .shelf {
+      bottom: 17.78vw;
+      right: 44.72vw;
+      width: 33.33vw;
+      height: 11.11vw;
+   }
+}
+
+/* Блок с картинкой Марио, этот блок применяется для анимации движения Марио.
+Этот блок будет поворачиватся и перемещать Марио */
+.mario {
+   /* позиционирование */
+   position: absolute;
+   bottom: 20.5vw;
+   right: 9.3vw;
+   z-index: 1;
+   /* размеры */
+   width: 14vw;
+   height: 14vw;
+}
+
+/* картинка Марио */
+.mario-img {
+   /* размеры */
+   width: 4.1vw;
+   height: 7.85vw;
+}
+
+@media (max-width:1439.98px) {
+   .mario {
+      bottom: 13vw;
+      right: 34vw;
+      width: 24vw;
+      height: 24vw;
+   }
+
+   .mario-img {
+      width: 5.76vw;
+      height: 11.04vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .mario {
+      bottom: 10vw;
+      right: 25vw;
+      width: 35vw;
+      height: 35vw;
+   }
+
+   .mario-img {
+      width: 8.33vw;
+      height: 15.83vw;
+   }
+}
+
+/* общий блок, внутри которого находится блки с текстом */
+.data {
+   position: relative;
+   display: flex;
+   align-items: center;
+   column-gap: 4.17vw;
+}
+
+@media (max-width:1439.98px) {
+   .data {
+      column-gap: 5.86vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .data {
+      display: block;
+   }
+}
+
+/* размеры блока с фотографией */
+.foto {
+   position: relative;
+   width: 20.28vw;
+   height: 25.35vw;
+}
+
+@media (max-width:1439.98px) {
+   .foto {
+      width: 28.52vw;
+      height: 35.64vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .foto {
+      width: 44.44vw;
+      height: 55.56vw;
+   }
+}
+
+.foto__frame,
+.foto__foto {
+   /*  задаёт размеры рамки и фото, они должны быть по размеру блока foto,
+   т.е. 100% ширины и высоты */
+   position: absolute;
+   width: 100%;
+   height: 100%;
+}
+
+/* Рамка для фотографии */
+.foto__frame img {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+/* Адаптивное позиционирование фотографии,
+для того, что бы при загрузке любого размера
+и соотношения сторон фотографии она отображалась правильно*/
+.foto__foto img {
+   position: absolute;
+   /*  засположение фото по центру рамки */
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   /* object-fit: cover это свойство поместит фото руководствуясь либо шириной,
+   лобо высотой фотографии так, что бы фото заняло всё пространство */
+   object-fit: cover;
+   /* размер фотографии */
+   width: 83.5%;
+   height: 83.5%;
+}
+
+.name {
+   /* размер шрифта имени */
+   font-size: 3.333vw;
+   font-weight: 500;
+   /*  отступы между строчками с именем */
+   padding-bottom: 0.1em;
+}
+
+@media (max-width:1439.98px) {
+   .name {
+      font-size: 4.79vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .name {
+      font-size: 6.12vw;
+      margin-top: 9.72vw;
+   }
+}
+
+.name div {
+   margin-bottom: 0.3em;
+   /* текст выводится заглавными буквами */
+   text-transform: uppercase;
+}
+
+.list {
+   /* текст выводится заглавными буквами */
+   text-transform: uppercase;
+   /* размер шрифта */
+   font-size: 1.25vw;
+   /* отступы между строчками */
+   margin: 1.39em 0px;
+}
+
+@media (max-width:1439.98px) {
+   .list {
+      font-size: 1.76vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .list {
+      font-size: 3.89vw;
+   }
+}
+
+/* цвет наименований */
+.list span:first-child {
+   color: #666666;
+}
+
+.list span:nth-child(2) {
+   padding: 0vw 1.11em;
+}
+
+.links {
+   display: flex;
+   column-gap: 2.78vw;
+}
+
+/* Ссылки */
+a {
+   display: inline-block;
+   /* текст заглавными буквами */
+   text-transform: uppercase;
+   /* внешние отступы от соседних элементов */
+   margin-top: 6.94vw;
+   /* отступы со всех стором от текста до рамки */
+   padding: 2.08vw;
+   font-size: 1.11vw;
+   /* цвет шрифта */
+   color: #101010;
+   /* рамка ссылки: толщина линии, вид рамки, цвет */
+   border: 0.28vw solid rgb(0, 0, 0);
+   /* цвет фона */
+   background-color: #FFFFFF;
+}
+
+@media (max-width:1439.98px) {
+   .links {
+      width: 100%;
+      display: block;
+      margin-top: 5.37vw;
+   }
+
+   a {
+      font-size: 2.25vw;
+      width: 100%;
+      text-align: center;
+      border-width: 0.39vw;
+      margin-top: 2.44vw;
+   }
+}
+
+@media (max-width:1023.98px) {
+   .links {
+      display: block;
+      margin-top: 5.37vw;
+   }
+
+   a {
+      font-size: 3.89vw;
+      width: 100%;
+      text-align: center;
+      border-width: 1.11vw;
+      margin-top: 4.17vw;
+      padding: 5.56vw;
+   }
+}
+
+/* Изменение цвета при наведении на ссылку */
+a:hover {
+   color: #D02F21;
+}
+
+/* ======= Анимация прыжка Mario ======= */
+/* при изменении скорости анимации, необходимо поменять время в анимациях
+под именами jump и rotate_img для сохранения синхронности */
+.mario.jump {
+   /* animation:
+   jump - имя анимации
+   1.5s - длительнасть в секундах
+   linear - линейность воспроизведения (можно заменить на ease)
+   forwards - после проигрывания остаётся конечное положение Марио
+    */
+   animation: jump 1.5s linear 1 forwards;
+}
+
+.mario.jump .mario-img {
+   position: relative;
+   animation: rotate_img 1.5s linear 1 forwards;
+}
+
+@keyframes jump {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   40% {
+      transform: rotate(130deg);
+   }
+
+   100% {
+      transform: rotate(130deg);
+   }
+}
+
+@keyframes rotate_img {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   40% {
+      transform: rotate(-130deg) translate(0%, 0%);
+   }
+
+   100% {
+      transform: rotate(-130deg) translate(0%, 200%);
+   }
+}
+
+/* анимация двойного прыжка */
+.mario.duble_jump {
+   animation: duble_jump 5s linear infinite;
+}
+
+@keyframes duble_jump {
+   0% {
+      transform: translate(0vw, 0vw);
+   }
+
+   8% {
+      transform: translate(0vw, -1.5vw);
+   }
+
+   16% {
+      transform: translate(0vw, 0vw);
+   }
+
+   24% {
+      transform: translate(0vw, -1.5vw);
+   }
+
+   32% {
+      transform: translate(0vw, 0vw);
+   }
+
+   100% {}
+}
