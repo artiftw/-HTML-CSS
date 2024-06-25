@@ -1,0 +1,33 @@
+name: Telegram и HTML5-Validator
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Уведомление и валидация
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send telegram message on push
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TG_ID }}
+        token: ${{ secrets.TG_TOKEN }}
+        message: |
+          ${{ github.actor }} создал новый коммит: ${{ github.event.commits[0].message }}
+          Ссылка на коммит: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          Репозиторий: https://github.com/${{ github.repository }}
+            
+          CI/CD github actions: https://github.com/${{ github.repository }}/actions
+          https://github.com/${{ github.repository }}/actions/runs/${{github.run_id}}
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Пройти проверки HTML5 Validator
+      uses: Cyb3r-Jak3/html5validator-action-experimental@master
+      with:
+        root: /
+      continue-on-error: true
